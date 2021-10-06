@@ -1,32 +1,32 @@
 <template>
-  <div>fiirre.a={{ fiirre.a }}</div>
-  <div>fiirre.b={{ fiirre.b }}</div>
-  <div>fiirre.c.e={{ fiirre.c.e }}</div>
-  <div @click="a">aCLick</div>
+  <div class="home">
+    <div class="go-login" @click="goLogin">登录</div>
+    <div class="title">F🔥🔥rre</div>
+  </div>
 </template>
 <script lang="ts">
-import { reactive } from 'vue'
 export default {
-  setup() {
-    let fiirre = reactive({
-      a: 1,
-      b: 2,
-      c: {
-        e: 3,
-      },
-    })
-    console.log(fiirre)
-    console.log(fiirre.c)
-    return { fiirre }
-  },
   methods: {
-    async a() {
-      const b = await new Promise((resolve, reject) => {
-        resolve(2)
-      })
-      console.log(b)
+    goLogin() {
+      this.$router.push('/login')
     },
   },
 }
 </script>
-<style lang="less"></style>
+<style lang="scss" scoped>
+.home {
+  margin-top: 200px;
+  .title {
+    font-size: 40px;
+  }
+  .go-login {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    width: 90px;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+  }
+}
+</style>

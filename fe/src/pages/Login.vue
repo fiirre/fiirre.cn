@@ -32,7 +32,10 @@
 import axios from 'axios'
 export default {
   data() {
-    const checkUser = (rule, value, callback) => {
+    type Rule = any
+    type Value = string
+    type Callback = (err?: Error) => void
+    const checkUser = (rule: Rule, value: Value, callback: Callback) => {
       if (!value) {
         return callback(new Error('请输入用户名'))
       }
@@ -48,7 +51,7 @@ export default {
         }
       }, 1000)
     }
-    const validatePass = (rule, value, callback) => {
+    const validatePass = (rule: Rule, value: Value, callback: Callback) => {
       if (value === '') {
         callback(new Error('请输入密码'))
       } else {
@@ -67,8 +70,8 @@ export default {
     }
   },
   methods: {
-    submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
+    submitForm(formName: string) {
+      ;(this.$refs[formName] as HTMLFormElement).validate((valid: boolean) => {
         if (valid) {
           console.log(valid)
           let { password, userName } = this.ruleForm
